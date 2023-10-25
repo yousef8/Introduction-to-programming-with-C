@@ -50,4 +50,10 @@ void deleteFromLine(char str[], int *length, int *cursorPosX, int *cursorPosY)
     gotoxy(*cursorPosX, *cursorPosY);
 }
 
+void addToLine(char str[], int *length, int *cursorPosX, int *cursorPosY, char ch)
+{
+    insertElement(str, length, (*cursorPosX), ch);
+    redrawLine(str, *cursorPosY);
+    gotoxy(*cursorPosX, *cursorPosY);
+}
 #endif

@@ -10,4 +10,14 @@ void deleteElement(char arr[], int *len, int pos)
     --(*len);
 }
 
+void insertElement(char arr[], int *len, int pos, char ch)
+{
+    for (int i = *len; i > pos; --i)
+    {
+        arr[i] = arr[i - 1];
+    }
+    arr[pos] = ch;
+    ++(*len);
+}
+
 #endif // CHARARRAY_H_INCLUDED

@@ -8,9 +8,9 @@ int main()
     int length = 0;
     printf("Enter:exit    <-/->:movement    Backspace:delete\n");
 
-    char ch = getch();
     int cursorPosX = 0, cursorPosY = 0;
     getCursorPosition(&cursorPosX, &cursorPosY);
+    char ch = getch();
 
     while (ENTER != ch)
     {
@@ -25,12 +25,19 @@ int main()
         }
         else
         {
-            line[cursorPosX] = ch;
-            ++length;
+            if (cursorPosX < length) // User inserting characters inside the string
+            {
+                addToLine(line, &length, &cursorPosX, &cursorPosY, ch);
+            }
+            else // User appending to the end of the line
+            {
+                line[cursorPosX] = ch;
+                ++length;
+            }
             putchar(ch);
         }
-        ch = getch();
         getCursorPosition(&cursorPosX, &cursorPosY);
+        ch = getch();
     }
     printf("\nYou entered : %s", line);
 
